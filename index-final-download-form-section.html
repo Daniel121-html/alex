@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#ff6600" name="theme-color"/>
+<title>My Fund Vault HQ</title>
+<link href="https://cdn.openai.com/chat-assets/user-uploads/gettyimages-1468025006-2048x2048.jpeg" rel="icon"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+    header {
+      background-color: #111;
+      color: #fff;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 999;
+    }
+    .logo {
+      font-size: 30px;
+      font-weight: bold;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 30px;
+      font-weight: 500;
+    }
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://cdn.openai.com/chat-assets/user-uploads/gettyimages-1468025006-2048x2048.jpeg') no-repeat center center/cover;
+      padding: 180px 40px 120px;
+      text-align: center;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 58px;
+      font-weight: 900;
+      margin-bottom: 25px;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+      animation: fadeInUp 1s ease;
+    }
+    .hero p {
+      font-size: 22px;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      color: #f1f1f1;
+      animation: fadeInUp 1.2s ease;
+    }
+    .hero a {
+      background-color: #ff6600;
+      color: #fff;
+      padding: 14px 28px;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 6px;
+      font-size: 18px;
+      transition: background 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+    .hero a:hover {
+      background-color: #e65c00;
+    }
+    section {
+      padding: 60px 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+  max-width: 100%;
+    }
+    .testimonial, .about, .services, .apply, .contact {
+      background: #fff;
+      color: #000;
+      padding: 40px;
+      border-radius: 10px;
+      margin-top: 30px;
+      animation: fadeInUp 0.8s ease;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+    }
+    form input, form textarea {
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background-color: #ff6600;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      font-size: 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    form button:hover {
+      background-color: #e65c00;
+    }
+    footer {
+      background: #1a1a1a;
+      color: #ccc;
+      text-align: center;
+      padding: 30px 20px;
+    }
+      @media screen and (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+      }
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+      .hero h1 {
+        font-size: 36px;
+      }
+      .hero p {
+        font-size: 18px;
+      }
+      .hero a {
+        font-size: 16px;
+        padding: 12px 24px;
+      }
+      section {
+        padding: 40px 20px;
+      }
+      form {
+        width: 100%;
+      }
+    }
+    .team-member {
+      perspective: 1000px;
+    }
+    .team-card {
+      width: 100px;
+  height: 100px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      margin: 0 auto;
+    }
+    .team-card:hover {
+      transform: rotateY(180deg);
+    }
+    .team-card img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .team-card .back {
+      background-color: #ff6600;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      font-size: 12px;
+      text-align: center;
+      border-radius: 50%;
+      transform: rotateY(180deg);
+    }
+  .about .team-member {
+    flex: 1 1 200px;
+    max-width: 220px;
+    text-align: center;
+  }
+  .about .team-member img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+  }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cta = document.querySelector('.cta-final');
+      if (cta) {
+        setTimeout(() => cta.scrollIntoView({ behavior: 'smooth' }), 10000);
+      }
+
+      const quotes = [
+        {
+          text: "My Fund Vault HQ helped us secure the capital we needed in under 48 hours. Their team was fast, friendly, and incredibly efficient.",
+          author: "— Stephanie L., Restaurant Owner"
+        },
+        {
+          text: "Quick, transparent, and reliable. We got approved the same day. Highly recommend!",
+          author: "— Marcus T., Retail Manager"
+        },
+        {
+          text: "From start to finish, their team made financing simple and stress-free.",
+          author: "— Priya N., Salon Owner"
+        }
+      ];
+
+      const container = document.querySelector('.testimonial div');
+      if (container) {
+        let current = 0;
+        container.innerHTML = `${quotes[current].text}<br><strong style="display: block; margin-top: 15px; color: #333;">${quotes[current].author}</strong>`;
+        setInterval(() => {
+          current = (current + 1) % quotes.length;
+          container.innerHTML = `${quotes[current].text}<br><strong style="display: block; margin-top: 15px; color: #333;">${quotes[current].author}</strong>`;
+        }, 7000);
+      }
+    });
+  </script>
+<script src="https://script.google.com/macros/library/d/1GjE0TzdUIZ_esjgr2YIozBXyRjnUo-7Kt21Jt3L3tSpTVbKmag5eyLXr/1"></script>
+</head>
+<body style="background: radial-gradient(circle at top right, #111 0%, #000 100%);">
+<header>
+<div class="logo">My Fund Vault HQ</div>
+<nav>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#download">Download Form</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+<section class="hero">
+<h1>Welcome to My Fund Vault HQ</h1>
+<p>Your Partner in Simplified Business Financing Solutions. Approvals in Less Than an Hour. Funds in 1 Day. No Collateral Required.</p>
+<a href="#apply" style="box-shadow: 0 4px 8px rgba(0,0,0,0.3);">Get Started</a>
+</section>
+
+
+<section class="services" id="services" style="background: #fff; color: #000; padding: 60px 30px; border-radius: 10px; margin-top: 30px; animation: fadeInUp 1s ease-in-out;">
+<h2 style="font-size: 32px; text-align: center; margin-bottom: 20px;">Our Services</h2>
+<p style="text-align: center; font-size: 18px; max-width: 700px; margin: 0 auto 40px; color: #333;">We offer streamlined financing solutions to help your business thrive — whether you're just starting or scaling up.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; text-align: center;">
+<div style="flex: 1 1 220px; max-width: 280px;">
+<img alt="Fast Approvals" src="https://cdn-icons-png.flaticon.com/512/3523/3523881.png" style="height: 60px; margin-bottom: 15px;"/>
+<h3 style="font-size: 20px; margin-bottom: 10px;">Fast Approvals</h3>
+<p style="font-size: 15px; color: #555;">Get approved in under an hour and funded within 24 hours.</p>
+</div>
+<div style="flex: 1 1 220px; max-width: 280px;">
+<img alt="No Collateral" src="https://cdn-icons-png.flaticon.com/512/4133/4133096.png" style="height: 60px; margin-bottom: 15px;"/>
+<h3 style="font-size: 20px; margin-bottom: 10px;">No Collateral</h3>
+<p style="font-size: 15px; color: #555;">Access capital without putting up your assets.</p>
+</div>
+<div style="flex: 1 1 220px; max-width: 280px;">
+<img alt="Flexible Repayments" src="https://cdn-icons-png.flaticon.com/512/609/609803.png" style="height: 60px; margin-bottom: 15px;"/>
+<h3 style="font-size: 20px; margin-bottom: 10px;">Flexible Repayments</h3>
+<p style="font-size: 15px; color: #555;">Plans that align with your cash flow and growth strategy.</p>
+</div>
+</div>
+<div style="text-align: center; margin-top: 40px;">
+<a href="#apply" style="display: inline-block; background-color: #ff6600; color: #fff; padding: 14px 28px; border-radius: 6px; font-size: 18px; font-weight: bold; text-decoration: none; transition: background 0.3s ease; animation: pulse 2s infinite; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">Explore Funding Options</a>
+</div>
+</section>
+<section class="testimonial">
+<h2>What Our Clients Say</h2>
+<div></div>
+</section>
+<section class="apply" id="apply">
+<h2>Chat with Us</h2>
+<form style="background: #f9f9f9; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+<input placeholder="Your Name" required="" type="text"/>
+<input placeholder="Email Address" required="" type="email"/>
+<input placeholder="Phone Number" required="" type="tel"/>
+<textarea placeholder="Tell us about your funding needs..." required=""></textarea>
+<button type="submit">Let's Do More</button>
+</form>
+</section>
+<section class="contact" id="contact">
+<h2 style="font-size: 32px; margin-bottom: 20px; text-align: center;">Get in Touch</h2>
+<p style="text-align: center; max-width: 600px; margin: 0 auto 30px; font-size: 16px; color: #333;">Have questions or ready to start your funding journey? Reach out to our friendly support team below.</p>
+<div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; text-align: center;">
+<div>
+<img alt="Email" src="https://cdn-icons-png.flaticon.com/512/732/732200.png" style="height: 40px;"/>
+<p style="margin-top: 10px; font-size: 16px; color: #000;">info@myfundvaulthq.com</p>
+</div>
+<div>
+<img alt="Website" src="https://cdn-icons-png.flaticon.com/512/535/535137.png" style="height: 40px;"/>
+<p style="margin-top: 10px; font-size: 16px; color: #000;"><a href="https://myfundvaulthq.com" style="color: #ff6600; text-decoration: none;" target="_blank">Visit our website</a></p>
+</div>
+</div>
+</section>
+<footer class="cta-final">
+<p>© 2025 My Fund Vault HQ. All rights reserved.</p>
+</footer>
+<!-- Trusted Partners Section -->
+
+<!-- Featured In Media -->
+
+<!-- Enhanced Downloadable Form Section -->
+<section class="download" id="download" style="background: #fff; color: #000; text-align: center; padding: 60px 30px;">
+<div style="margin-top: 0; max-width: 960px; margin-left: auto; margin-right: auto; text-align: center;">
+<h3 style="font-size: 32px; font-weight: 700; color: #000; margin-bottom: 30px;">How It Works</h3>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+<style>
+    .how-icon {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #ff6600;
+    }
+  
+    @media (max-width: 768px) {
+      .download .how-icon {
+        font-size: 28px;
+      }
+      .download div[style*='flex: 1 1 220px'] {
+        flex: 1 1 100% !important;
+        margin-bottom: 20px;
+      }
+      .download div[style*='display: grid'] {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    .download a:hover {
+      background-color: #e65c00;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+    }
+    .download .how-icon:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
+    }
+    .download iframe, .download img {
+      transition: transform 0.3s ease;
+    }
+    .download iframe:hover, .download img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Sticky back-to-top button */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #ff6600;
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      font-size: 18px;
+      border-radius: 50%;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      cursor: pointer;
+      display: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+      z-index: 999;
+    }
+    #backToTop:hover {
+      background-color: #e65c00;
+      transform: scale(1.1);
+    }
+</style>
+<div style="flex: 1 1 220px; background: #f7f7f7; padding: 20px 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.06);">
+<h4 style="font-size: 20px; margin-bottom: 10px; color: #ff6600; font-family: 'DM Sans', sans-serif; font-weight: 600;">Step 1</h4>
+<p style="font-size: 16px; color: #333; font-family: 'DM Sans', sans-serif; font-weight: 500;"><strong>Download the Application:</strong><br/>Fill out the simple one-page application form.</p>
+</div>
+<div style="flex: 1 1 220px; background: #f7f7f7; padding: 20px 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.06);">
+<h4 style="font-size: 20px; margin-bottom: 10px; color: #ff6600;">Step 2</h4>
+<p style="font-size: 16px; color: #333;"><strong>Provide your Statement:</strong><br/>Provide your last 4 months of bank statements.</p>
+</div>
+<div style="flex: 1 1 220px; background: #f7f7f7; padding: 20px 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.06);">
+<h4 style="font-size: 20px; margin-bottom: 10px; color: #ff6600;">Step 3</h4>
+<p style="font-size: 16px; color: #333;"><strong>Email all Forms and Statements:</strong><br/>Email to Tiffany Chung at <a href="mailto:info@myfundvaulthq.com" style="color: #ff6600; text-decoration: none;">info@myfundvaulthq.com</a></p>
+</div>
+<div style="flex: 1 1 220px; background: #f7f7f7; padding: 20px 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.06);">
+<h4 style="font-size: 20px; margin-bottom: 10px; color: #ff6600;">Step 4</h4>
+<p style="font-size: 16px; color: #333;"><strong>Get Funded:</strong><br/>Receive approval and funds within one business day!</p>
+</div>
+</div>
+</div>
+
+<h2 style="font-size: 36px; margin-top: 60px; margin-bottom: 16px; font-weight: 700; text-align: center;">Download Our Business Funding Application</h2>
+<p style="font-size: 18px; max-width: 720px; margin: 0 auto 30px; color: #333; line-height: 1.6; text-align: center;">
+      Get a head start on your funding journey by filling out our quick-start PDF application. It’s easy to complete and helps us tailor solutions to your needs.
+    </p>
+<a href="https://img1.wsimg.com/blobby/go/f05aa899-ea8b-486f-b94b-a6e9bae66663/BBF%20Application.pdf" style="display: inline-block; background-color: #ff6600; color: #fff; padding: 16px 32px; border-radius: 8px; font-size: 18px; font-weight: 600; text-decoration: none; transition: background 0.3s ease; box-shadow: 0 6px 12px rgba(0,0,0,0.2);" target="_blank">
+      📥 Download PDF Application
+    </a>
+<div style="margin-top: 50px; display: flex; justify-content: center; flex-wrap: wrap; gap: 40px;">
+<div style="background: #f9f9f9; padding: 0; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 800px; width: 100%;">
+<iframe height="600px" src="https://img1.wsimg.com/blobby/go/f05aa899-ea8b-486f-b94b-a6e9bae66663/BBF%20Application.pdf#zoom=84" style="border: 1px solid #ddd; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);" width="100%"></iframe>
+</div>
+<div style="background: #f9f9f9; padding: 0; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 800px; width: 100%;">
+<a href="/mnt/data/05a17622-4157-40cb-afd3-a6f3815972e9.png" target="_blank">
+<img alt="Embedded Form Preview" src="/mnt/data/05a17622-4157-40cb-afd3-a6f3815972e9.png" style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);"/>
+</a>
+</div>
+</div>
+<div style="margin-top: 80px; text-align: center;">
+<h2 style="font-size: 32px; font-weight: 700; margin-bottom: 10px;">Why Many Businesses Choose Us Over the SBA</h2>
+<p style="font-size: 24px; margin-bottom: 30px; font-weight: 700; color: #111; text-transform: uppercase; letter-spacing: 1.3px; font-family: 'DM Sans', sans-serif;">Bestline Business Funding <span style="color: #ccc;">vs</span> SBA</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left; max-width: 960px; margin: 0 auto;">
+<div style="flex: 1 1 420px; background: #f8f8f8; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+<img alt="Bestline Business Funding Logo" src="https://d.img.vision/bestlinebusinessfunding/Leonardo_Kino_XL_Bestline_Business_Funding_logo_0.jpg" style="max-width: 160px; height: auto; display: block; margin: 10px auto 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+<ul style="font-size: 17px; line-height: 1.8; padding-left: 20px; font-family: 'DM Sans', sans-serif; font-weight: 500; color: #222;">
+<li><strong>2 hours</strong> APPROVAL TIME</li>
+<li><strong>No</strong> Collateral</li>
+<li><strong>FICO 480+</strong> Credit Score</li>
+<li><strong>Up to $5 million</strong> Funding Amount</li>
+<li><strong>Daily, weekly, bi-weekly, or monthly</strong> Repayment Flexibility</li>
+</ul>
+</img></div>
+<div style="flex: 1 1 420px; background: #f8f8f8; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+<a href="https://ibb.co/PvfJp9Tx" target="_blank"><img alt="SBA Logo" src="https://i.ibb.co/PvfJp9Tx/rs-w-600-h-300-cg-true-1.webp" style="max-width: 160px; height: auto; display: block; margin: 10px auto 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);"/></a>
+<ul style="font-size: 17px; line-height: 1.8; padding-left: 20px; font-family: 'DM Sans', sans-serif; font-weight: 500; color: #222;">
+<li>SBA – 60-90 days <strong>APPROVAL TIME</strong></li>
+<li><strong>COLLATERAL</strong> Required</li>
+<li>SBA – FICO 600+ <strong>CREDIT SCORE</strong></li>
+<li><strong>FUNDING AMOUNT</strong> is Limited by Small Business (SBA) guidelines</li>
+<li>Fixed terms <strong>REPAYMENT FLEXIBILITY</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Floating Apply Now Button -->
+<a href="#apply" style="position: fixed; bottom: 20px; right: 20px; background-color: #ff6600; color: #fff; padding: 12px 20px; border-radius: 50px; font-weight: bold; font-size: 16px; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 9999;">Apply Now</a>
+<!-- Optional Chatbot Widget -->
+<script>
+    window.chatWidget=window.chatWidget||function(){(window.chatWidget.q=window.chatWidget.q||[]).push(arguments)};
+    window.chatWidget('init', { botId: 'your-bot-id', position: 'bottom-right' });
+    // replace with real script or provider
+  </script>
+<!-- Floating Help Button -->
+<div id="help-button" style="position: fixed; bottom: 80px; right: 20px; z-index: 9999;">
+<a href="https://wa.me/1234567890" style="display: inline-block; background: #25D366; color: #fff; padding: 12px 18px; border-radius: 30px; box-shadow: 0 2px 6px rgba(0,0,0,0.3); font-weight: bold; text-decoration: none; font-size: 14px;" target="_blank">Chat with Us</a>
+</div>
+<!-- Mobile Popup Banner -->
+<div id="mobile-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #ff6600; color: white; text-align: center; padding: 12px 20px; font-size: 16px; z-index: 9999;">
+    💬 Have a question? <a href="#contact" style="color: #fff; font-weight: bold; text-decoration: underline;">Contact us</a>
+</div>
+<script>
+    // Show mobile banner on small screens
+    if (window.innerWidth <= 768) {
+      document.getElementById('mobile-banner').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
